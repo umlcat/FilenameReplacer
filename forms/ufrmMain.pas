@@ -11,12 +11,13 @@ uses
   {$ENDIF}
   //ToolEdit,
   CheckLst, EditBtn,
-  uktossys, uktossearchfiles,
-  uktstrings,
-  uktmsgdlgtypes,
-  uktmsgdlgs,
-  uktmsgdlgsmemos,
-  ResStrs, ufrmAbout;
+  umlcossys, umlcossearchfiles,
+  umlcstrings,
+  umlcmsgdlgtypes,
+  umlcmsgdlgs,
+  umlcmsgdlgsmemos,
+  ResStrs, ufrmAbout,
+  dummy;
 
 type
 
@@ -89,7 +90,7 @@ end;
 
 procedure TfrmMain.btnHelpClick(Sender: TObject);
 begin
-  uktmsgdlgsmemos.ShowMessage('Hello World');
+  umlcmsgdlgsmemos.ShowMessage('Hello World');
 end;
 
 procedure TfrmMain.FormDestroy(Sender: TObject);
@@ -104,7 +105,7 @@ begin
   //@to-do: folder sep.
   ConfigFilename := ExtractFileDir(AppPath) + DirectorySeparator + 'ExtReplacer.txt';
 
-  if (uktossys.FileFound(ConfigFilename)) then
+  if (umlcossys.FileFound(ConfigFilename)) then
   begin
     System.Assign(F, ConfigFilename);
     System.Reset(F);
@@ -156,7 +157,7 @@ begin
 
     // obtener subcadena a buscar
     SourceName :=
-      uktstrings.TrimPosfixCopy(edSourceFileName.Text, ExtensionSeparator);
+      umlcstrings.TrimPosfixCopy(edSourceFileName.Text, ExtensionSeparator);
 
     SourceFileExt := '*' + SourceName + '*' + ExtensionSeparator + '*';
 
@@ -197,9 +198,9 @@ begin
   DestFileName := edDestFileName.Text;
 
   DestFileName :=
-    uktstrings.TrimPosfixCopy(DestFileName, '*');
+    umlcstrings.TrimPosfixCopy(DestFileName, '*');
   DestFileName :=
-    uktstrings.TrimPrefixCopy(DestFileName, '*');
+    umlcstrings.TrimPrefixCopy(DestFileName, '*');
 
   with chlbDestination, Items do
   begin
@@ -217,7 +218,7 @@ begin
         // indicated by "SourceFilename"
         // to "DestFilename"
         Destname   :=
-          uktstrings.ReplaceCopy(Sourcename, SourceFilename, DestFilename);
+          umlcstrings.ReplaceCopy(Sourcename, SourceFilename, DestFilename);
         // obtain destination name
         // obtener nombre destino
 
@@ -270,7 +271,7 @@ end;
 
 procedure TfrmMain.btnAboutClick(Sender: TObject);
 begin
-  ufrmAbout.Ejecutar();
+  ufrmAbout.Execute();
 end;
 
 procedure TfrmMain.btnExitClick(Sender: TObject);

@@ -26,13 +26,13 @@ type
     procedure LoadStrings;
   end;
 
-  procedure Ejecutar;
+  procedure Execute;
 
 implementation
 
 {$R *.lfm}
 
-procedure Ejecutar;
+procedure Execute;
 var Form: TfrmAbout;
 begin
   Application.CreateForm(TfrmAbout, Form);
